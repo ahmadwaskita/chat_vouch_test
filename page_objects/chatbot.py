@@ -59,3 +59,15 @@ class Chatbot:
 
     def card_gallery_date(self, driver):
         return self.helpers.wait_presence_all_by_class(driver, 'vcw-message-date-plain')
+
+    def btn_chat_send(self, driver):
+        return self.helpers.wait_clickable_by_id(driver, 'vc-btn-send')
+
+    def btn_chat_attach(self, driver):
+        return self.helpers.wait_clickable_by_id(driver, 'vc-btn-image')
+
+    def field_chat_text(self, driver):
+        return self.helpers.wait_clickable_by_id(driver, 'vc-input')
+
+    def chatbot_quick_replies(self, driver):
+        return self.helpers.wait_visibility_all_by_class(driver, 'quick-reply')

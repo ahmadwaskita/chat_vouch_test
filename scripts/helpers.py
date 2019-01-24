@@ -39,6 +39,9 @@ class Helpers():
     def wait_visibility_by_class(self, driver, el, wait=10):
         return WebDriverWait(driver, wait).until(EC.visibility_of_element_located((By.CLASS_NAME, el)))
 
+    def wait_visibility_all_by_class(self, driver, el, wait=10):
+        return WebDriverWait(driver, wait).until(EC.visibility_of_all_elements_located((By.CLASS_NAME, el)))
+
     def wait_visibility_by_selector(self, driver, el, wait=10):
         return WebDriverWait(driver, wait).until(EC.visibility_of_element_located((By.CSS_SELECTOR, el)))
 
