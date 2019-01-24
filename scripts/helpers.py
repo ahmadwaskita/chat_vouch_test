@@ -2,6 +2,8 @@ import json
 import os
 import re
 import requests
+from time import strftime, localtime
+from datetime import datetime, timedelta
 
 from selenium.common.exceptions import NoSuchElementException, TimeoutException, StaleElementReferenceException
 from selenium.webdriver import ActionChains
@@ -118,3 +120,19 @@ class Helpers():
         else:
             return 'image_error'
 
+    def internet_time(self):
+        try:
+            import ntplib
+
+            client = ntplib.NTPClient()
+            response = client.request('pool.ntp.org')
+            return strftime('%a, %d %b %H:%M:%S', localtime(response.tx_time))
+        except:
+            print('Could not sync with time server.')
+
+    def time_delta_one_minute(self, t1, t2):
+        tdelta = datetime.strptime(t2[12:], '%H:%M:%S') - datetime.strptime(t1[12:], '%H:%M:%S')
+        if abs(timedelta.total_seconds(tdelta)) < 61:
+            return True
+        else:
+            return False

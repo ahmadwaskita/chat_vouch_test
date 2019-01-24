@@ -10,10 +10,10 @@ class Chatbot:
         return self.helpers.wait_clickable_by_id(driver, 'vc-chat-button')
 
     def img_btn_widget_chatbot_open(self, driver):
-        return self.helpers.wait_visibility_by_id(driver, 'vc-chat-button-open')
+        return self.helpers.wait_presence_by_id(driver, 'vc-chat-button-open')
 
     def img_btn_widget_chatbot_close(self, driver):
-        return self.helpers.wait_visibility_by_id(driver, 'vc-chat-button-close')
+        return self.helpers.wait_presence_by_id(driver, 'vc-chat-button-close')
 
     def title_widget(self, driver):
         return self.helpers.wait_visibility_by_id(driver, 'vc-widget-title')
