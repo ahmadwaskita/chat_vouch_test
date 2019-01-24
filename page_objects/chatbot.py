@@ -29,3 +29,33 @@ class Chatbot:
 
     def btn_chatbot_greeting(self, driver):
         return self.helpers.wait_clickable_by_id(driver, 'vc-greeting-button')
+
+    def chat_messages(self, driver):
+        return self.helpers.wait_presence_all_by_class(driver, 'vcw-message-bubble')
+
+    def chat_messages_date(self, driver):
+        return self.helpers.wait_presence_all_by_class(driver, 'vcw-message-date')
+
+    def gallery(self, driver):
+        return self.helpers.wait_presence_all_by_class(driver, 'vcw-gallery')
+
+    def card_gallery_image(self, driver):
+        image = self.helpers.wait_presence_all_by_class(driver, 'vcw-card-image')
+        image_src = {}
+        for i in image:
+            image_src.update({i: i.find_element_by_tag_name('img').get_attribute('src')})
+        return image_src
+
+    def card_gallery_title(self, driver):
+        return self.helpers.wait_presence_all_by_class(driver, 'vcw-card-text-title')
+
+    def card_gallery_buttons(self, driver):
+        buttons = self.helpers.wait_presence_all_by_class(driver, 'vcw-card-button')
+        button_text = []
+        for i in buttons:
+            button_text.append(i.text)
+        button_text = list(filter(None, button_text))
+        return button_text
+
+    def card_gallery_date(self, driver):
+        return self.helpers.wait_presence_all_by_class(driver, 'vcw-message-date-plain')

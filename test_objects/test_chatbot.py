@@ -95,30 +95,69 @@ class TestChatbot():
         driver.refresh()
         self.helpers.get_page_main(driver)
 
-        print(driver.current_url)
+        # print(driver.current_url)
 
         btn_greeting = self.chatbot.btn_chatbot_greeting(driver)
         btn_greeting.click()
 
-        sleep(5)
+        sleep(10)
 
-    def test_chatbot_input_unknown_words(self, driver):
-        driver.refresh()
-        self.helpers.get_page_main(driver)
+        gallery = self.chatbot.gallery(driver)
 
-        print(driver.current_url)
+        chat_messages = self.chatbot.chat_messages(driver)
+        # for i in chat_messages:
+        #     print(i.text)
 
-        btn_greeting = self.chatbot.btn_chatbot_greeting(driver)
-        btn_greeting.click()
-        pass
+        # chat_date = self.chatbot.chat_messages_date(driver)
+        # for k in chat_date:
+        #     print(k.text)
 
-    def test_chatbot_input_known_words(self, driver):
-        driver.refresh()
-        self.helpers.get_page_main(driver)
+        gallery_image = self.chatbot.card_gallery_image(driver)
+        # for k,v in gallery_image.items():
+        #     print(k,v)
 
-        print(driver.current_url)
+        gallery_image_keys = list(gallery_image.keys())
+        # gallery_image_values = list(gallery_image.values())
 
-        btn_greeting = self.chatbot.btn_chatbot_greeting(driver)
-        btn_greeting.click()
-        pass
+
+        # gallery_title = self.chatbot.card_gallery_title(driver)
+        # for b in gallery_title:
+        #     print(b.text)
+
+        # gallery_buttons = self.chatbot.card_gallery_buttons(driver)
+        # for c in gallery_buttons:
+        #     print(c)
+
+        self.helpers.scroll_to_element(driver, chat_messages[0])
+        sleep(3)
+        self.helpers.scroll_to_element(driver, gallery[0])
+        sleep(3)
+        self.helpers.scroll_to_element(driver, gallery_image_keys[4])
+        sleep(3)
+        self.helpers.scroll_to_element(driver, gallery_image_keys[0])
+        sleep(3)
+
+        # gallery_date = self.chatbot.card_gallery_date(driver)
+        # for d in gallery_date:
+        #     print(d.text)
+
+    # def test_chatbot_input_unknown_words(self, driver):
+    #     driver.refresh()
+    #     self.helpers.get_page_main(driver)
+    #
+    #     print(driver.current_url)
+    #
+    #     # btn_greeting = self.chatbot.btn_chatbot_greeting(driver)
+    #     # btn_greeting.click()
+    #     # pass
+    #
+    # def test_chatbot_input_known_words(self, driver):
+    #     driver.refresh()
+    #     self.helpers.get_page_main(driver)
+    #
+    #     print(driver.current_url)
+    #
+    #     # btn_greeting = self.chatbot.btn_chatbot_greeting(driver)
+    #     # btn_greeting.click()
+    #     # pass
 

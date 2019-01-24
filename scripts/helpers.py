@@ -18,6 +18,18 @@ class Helpers():
     def wait_presence_by_id(self, driver, el, wait=10):
         return WebDriverWait(driver, wait).until(EC.presence_of_element_located((By.ID, el)))
 
+    def wait_presence_all_by_id(self, driver, el, wait=10):
+        return WebDriverWait(driver, wait).until(EC.presence_of_all_elements_located((By.ID, el)))
+
+    def wait_presence_all_by_class(self, driver, el, wait=10):
+        return WebDriverWait(driver, wait).until(EC.presence_of_all_elements_located((By.CLASS_NAME, el)))
+
+    def wait_presence_by_selector(self, driver, el, wait=10):
+        return WebDriverWait(driver, wait).until(EC.presence_of_element_located((By.CSS_SELECTOR, el)))
+
+    def wait_presence_by_tag(self, driver, el, wait=10):
+        return WebDriverWait(driver, wait).until(EC.presence_of_element_located((By.TAG_NAME, el)))
+
     def wait_clickable_by_id(self, driver, el, wait=10):
         return WebDriverWait(driver, wait).until(EC.element_to_be_clickable((By.ID, el)))
 
@@ -128,7 +140,8 @@ class Helpers():
             response = client.request('pool.ntp.org')
             return strftime('%a, %d %b %H:%M:%S', localtime(response.tx_time))
         except:
-            print('Could not sync with time server.')
+            print('Could not sync with time server, use local time instead')
+            return strftime('%a, %d %b %H:%M:%S', localtime())
 
     def time_delta_one_minute(self, t1, t2):
         tdelta = datetime.strptime(t2[12:], '%H:%M:%S') - datetime.strptime(t1[12:], '%H:%M:%S')
